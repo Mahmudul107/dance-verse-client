@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-300 text-gray-800 py-8 font-[Lato] mr-">
+    <footer className="bg-white text-gray-800 py-8 font-[Lato] mr-">
       <div className="container mx-auto px-4">
         <div className="flex justify-center ml-40">
           <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0 mr-10">
@@ -34,13 +34,13 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-2">Social Media</h4>
             <div className="divider w-28"></div>
             <div className="flex space-x-4">
-              <Link className="text-red-400 hover:text-white">
+              <Link className="text-white hover:text-red-600 bg-red-400 p-4 btn-circle">
                 <FaGoogle />
               </Link>
-              <Link className="text-red-400 hover:text-white">
+              <Link className="text-white hover:text-red-600 bg-red-400 p-4 btn-circle">
                 <FaInstagram />
               </Link>
-              <Link className="text-red-400 hover:text-white">
+              <Link className="text-white hover:text-red-600 bg-red-400 p-4 btn-circle">
                 <FaTwitter />
               </Link>
             </div>
