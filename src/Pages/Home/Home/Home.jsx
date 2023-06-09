@@ -5,8 +5,8 @@ import Slider from './slider/Slider';
 const Home = () => {
     return (
         <div>
-            <Marque/>
             <Slider/>
+            <Marque/>
         </div>
     );
 };

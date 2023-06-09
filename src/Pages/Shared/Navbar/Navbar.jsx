@@ -64,7 +64,7 @@ const Navbar = () => {
   );
 
   return (
-    <div>
+    <div className="fixed h-14 z-10 w-full">
       <div className="navbar h-14 bg-gradient-to-r from-purple-300 to-red-200">
         <div className="navbar-start">
           <div className="dropdown">
@@ -79,7 +79,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center justify-center">
-            <img className="w-24 h-32 -mr-6" src={logo} alt="" />
+             
             <Link className="btn btn-ghost normal-case text-3xl">
               Dance Verse
             </Link>
