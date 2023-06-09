@@ -4,8 +4,17 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    console.log(data)
+  };
+
+
+
   return (
     <div
       className="-mb-10"
@@ -18,24 +27,24 @@ const Login = () => {
             style={{ height: "80%", width: "80%" }}
           />
         </div>
-        <div className="p-6 rounded-lg text-white -ml-40">
+        <div className="p-6 rounded-lg -ml-40">
           <h2 className="text-3xl font-semibold mb-3 mt-12">Login Here</h2>
-          <h4 className=" font-semibold text-base mb-8">
+          <h4 className=" font-semibold  text-white text-base mb-8">
             Log In to try our amazing services
           </h4>
-          <form className="flex flex-col space-y-4 my-auto">
-            <h2 className="text-xl font-semibold">Email Address</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 my-auto">
+            <h2 className="text-xl text-white font-semibold">Email Address</h2>
             <input
               type="email"
-              name="email"
+              {...register("email")}
               placeholder="Enter Your Email"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
               required
             />
-            <h2 className="text-xl font-semibold">Password</h2>
+            <h2 className="text-xl text-white font-semibold">Password</h2>
             <input
               type="password"
-              name="password"
+              {...register("password")}
               placeholder="Enter Password"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
               required
@@ -48,7 +57,7 @@ const Login = () => {
             </button>
           </form>
           <div className="mt-10 text-center">
-            <p className="text-lg">Or sign up using:</p>
+            <p className="text-lg text-white">Or sign up using:</p>
             <div className="flex gap-4 justify-center mt-6">
               <button className="bg-red-400 hover:bg-fuchsia-500 border-none btn-circle flex items-center justify-center">
                 <FaGoogle />

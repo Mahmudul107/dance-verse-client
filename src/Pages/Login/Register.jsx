@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 
 
 const Register = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = data => {
     console.log(data)
@@ -35,19 +35,20 @@ const Register = () => {
             <h2 className="text-xl font-semibold">Name</h2>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", { required: true })}
               placeholder="Enter Your name"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              required
-            />
+              />
+              {errors.name && <span className="text-red-500">This name field is required</span>}
             <h2 className="text-xl font-semibold text-white">Email Address</h2>
             <input
               type="email"
-              {...register("email")}
+              {...register("email", { required: true })}
               placeholder="Enter Your Email"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
               required
             />
+            {errors.email && <span className="text-red-500">This Email field is required</span>}
             <h2 className="text-xl font-semibold text-white">Password</h2>
             <input
               type="password"
@@ -68,11 +69,11 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-white">Photo URL</h2>
             <input
               type="url"
-              {...register("photoURL")}
+              {...register("photoURL", { required: true })}
               placeholder="Place your photo"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              required
             />
+            {errors.photoURL && <span className="text-red-400">This URL field is required</span>}
             <button
               type="submit"
               className="bg-red-400 text-white py-3 px-10 rounded-lg shadow-md hover:bg-fuchsia-600 transition-colors duration-300"
