@@ -1,19 +1,51 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signInUser, googleSign } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
 
   const onSubmit = data => {
     console.log(data)
+
+    const { email, password } = data;
+
+    signInUser(email, password)
+    .then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      setError("");
+      navigate(from, {replace: true});
+    })
+    .catch((err) => {
+      console.error(err);
+      setError("Invalid Email or Password. Please try again.");
+    });
   };
 
-
+  // Google sign in with popup
+  const handleGoogleSignIn = () => {
+    googleSign()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div
@@ -49,6 +81,9 @@ const Login = () => {
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
               required
             />
+            {errors.email && <span className="text-red-500">{errors.email.message}</span>}
+            {errors.password && <span className="text-red-500">{errors.password.message}</span>}
+            {error && <span className="text-red-500">{error}</span>}
             <button
               type="submit"
               className="bg-red-500 text-white py-3 px-10 rounded-lg shadow-md hover:bg-fuchsia-600 transition-colors duration-300"
@@ -60,7 +95,7 @@ const Login = () => {
             <p className="text-lg text-white">Or sign up using:</p>
             <div className="flex gap-4 justify-center mt-6">
               <button className="bg-red-400 hover:bg-fuchsia-500 border-none btn-circle flex items-center justify-center">
-                <FaGoogle />
+                <FaGoogle onClick={handleGoogleSignIn}/>
               </button>
               <button className="bg-blue-600 hover:bg-fuchsia-500 border-none btn-circle flex items-center justify-center">
                 <FaGithub />

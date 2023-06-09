@@ -1,36 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
-  const { createUser, updateUserData } = useContext(AuthContext);
+  const {user, createUser, updateUserData } = useContext(AuthContext);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-    getValues,
+    getValues,reset
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
 
-    createUser(data.email, data.password)
+    const { name, email, password, confirmPassword, photoURL } = data;
+
+    createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
-        updateUserData(result.user, data.name ,data.photoUrl);
+        updateUserData(result.user, name, photoURL);
+        setIsRegistered(true); // set isRegistered to true if registration is successful
+        reset();
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
+    // Redirect to login form after registration
+    if (isRegistered) {
+      return (
+        <div className="flex items-center justify-center h-screen bg-gray-100 ">
+          <div className="bg-fuchsia-200 p-6 rounded-lg shadow-lg md:w-1/2 text-center">
+            <h2 className="text-lg font-semibold mb-4">Registration successful!</h2>
+            <Link
+              className="text-red-500 hover:underline font-bold"
+              to="/login"
+            >
+              Click here to login
+            </Link>
+          </div>
+        </div>
+      );
+    }
 
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
@@ -58,7 +80,7 @@ const Register = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col space-y-4 my-auto"
           >
-            <h2 className="text-xl font-semibold">Name</h2>
+            <h2 className="text-xl text-white font-semibold">Name</h2>
             <input
               type="text"
               {...register("name", { required: "This Name field is required" })}

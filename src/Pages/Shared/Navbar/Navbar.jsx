@@ -8,6 +8,17 @@ import { FaUser } from "react-icons/fa";
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
 
+
+  const handleLogout = () => {
+    logOutUser()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const renderProfileButton = () => {
     if (user) {
       return (
@@ -82,7 +93,7 @@ const Navbar = () => {
       {renderProfileButton()}
           {user && (
             <Link
-              // onClick={handleLogout}
+              onClick={handleLogout}
               className="bg-red-600 hover:bg-red-400 duration-700 ml-2 text-white font-bold py-2 px-4 rounded-3xl"
             >
               Logout
