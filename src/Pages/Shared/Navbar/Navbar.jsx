@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dancing.png";
+import { AuthContext } from "../../../providers/AuthProviders";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const renderProfileButton = () => {
+    if (user) {
+      return (
+        <button
+          className="border-none btn-circle duration-500 mr-2"
+          title={user.displayName}
+        >
+          {user?.photoURL ? (
+            <img className="rounded-full" src={user.photoURL} alt="" />
+          ) : (
+            <FaUser />
+          )}
+        </button>
+      );
+    } else {
+      return (
+        <Link
+          to="/login"
+          className="bg-red-600 hover:bg-red-400 duration-700 ml-2 text-white font-bold py-2 px-4 rounded-3xl"
+        >
+          Login
+        </Link>
+      );
+    }
+  };
+
+
   const navOptions = (
     <>
       <li>
@@ -48,7 +79,15 @@ const Navbar = () => {
         </div>
         
       <div className="navbar-end mr-10 text-lg">
-        <Link to='/login'>Login</Link>
+      {renderProfileButton()}
+          {user && (
+            <Link
+              // onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-400 duration-700 ml-2 text-white font-bold py-2 px-4 rounded-3xl"
+            >
+              Logout
+            </Link>
+          )}
       </div>
       </div>
     </div>

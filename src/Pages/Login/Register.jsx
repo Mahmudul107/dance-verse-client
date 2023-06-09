@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
+  const { createUser, updateUserData } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -17,6 +20,16 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
+    createUser(data.email, data.password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        updateUserData(result.user, data.name ,data.photoUrl);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const password = watch("password");
@@ -48,7 +61,7 @@ const Register = () => {
             <h2 className="text-xl font-semibold">Name</h2>
             <input
               type="text"
-              {...register("name", { required: "This field is required" })}
+              {...register("name", { required: "This Name field is required" })}
               placeholder="Enter Your name"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
@@ -59,7 +72,7 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-white">Email Address</h2>
             <input
               type="email"
-              {...register("email", { required: "This field is required" })}
+              {...register("email", { required: "This Email field is required" })}
               placeholder="Enter Your Email"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
@@ -71,7 +84,7 @@ const Register = () => {
             <input
               type="password"
               {...register("password", {
-                required: "This field is required",
+                required: "This Password field is required",
                 minLength: {
                   value: 6,
                   message: "Password must be at least 6 characters long",
@@ -96,7 +109,7 @@ const Register = () => {
             <input
               type="password"
               {...register("confirmPassword", {
-                required: "This field is required",
+                required: "This Confirm Password field is required",
                 validate: (value) =>
                   value === getValues("password") ||
                   "Passwords do not match",
@@ -113,7 +126,7 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-white">Photo URL</h2>
             <input
               type="url"
-              {...register("photoURL", { required: "This field is required" })}
+              {...register("photoURL", { required: "This URL field is required" })}
               placeholder="Place your photo"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
