@@ -6,20 +6,28 @@ import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
 
-
-
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    getValues,
+  } = useForm();
 
-  const onSubmit = data => {
-    console.log(data)
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
-
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
 
   return (
-    <div className="-mb-10" style={{ backgroundImage: `url(${loginBg})`, backgroundSize: 'cover' }}>
-      <div className="flex items-center justify-center" >
+    <div
+      className="-mb-10"
+      style={{ backgroundImage: `url(${loginBg})`, backgroundSize: "cover" }}
+    >
+      <div className="flex items-center justify-center">
         <div className="w-1/2 pr-8">
           <Lottie
             animationData={groovyWalkAnimation}
@@ -27,53 +35,92 @@ const Register = () => {
           />
         </div>
         <div className="p-6 rounded-lg -ml-40">
-          <h2 className="text-3xl text-white font-semibold mb-3 mt-12">Registration Here</h2>
+          <h2 className="text-3xl text-white font-semibold mb-3 mt-12">
+            Registration Here
+          </h2>
           <h4 className="text-white font-semibold text-base mb-8">
             Sign Up to try our amazing services
           </h4>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 my-auto">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col space-y-4 my-auto"
+          >
             <h2 className="text-xl font-semibold">Name</h2>
             <input
               type="text"
-              {...register("name", { required: true })}
+              {...register("name", { required: "This field is required" })}
               placeholder="Enter Your name"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              />
-              {errors.name && <span className="text-red-500">This name field is required</span>}
+            />
+            {errors.name && (
+              <span className="text-red-500">{errors.name.message}</span>
+            )}
+
             <h2 className="text-xl font-semibold text-white">Email Address</h2>
             <input
               type="email"
-              {...register("email", { required: true })}
+              {...register("email", { required: "This field is required" })}
               placeholder="Enter Your Email"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              required
             />
-            {errors.email && <span className="text-red-500">This Email field is required</span>}
+            {errors.email && (
+              <span className="text-red-500">{errors.email.message}</span>
+            )}
+
             <h2 className="text-xl font-semibold text-white">Password</h2>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", {
+                required: "This field is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters long",
+                },
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{6,}$/,
+                  message:
+                    "Password must contain at least one uppercase letter, one special character, and one digit",
+                },
+              })}
               name="password"
               placeholder="Enter Password"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              required
             />
-            <h2 className="text-xl font-semibold text-white">Confirm Password</h2>
+            {errors.password && (
+              <span className="text-red-500">{errors.password.message}</span>
+            )}
+
+            <h2 className="text-xl font-semibold text-white">
+              Confirm Password
+            </h2>
             <input
               type="password"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", {
+                required: "This field is required",
+                validate: (value) =>
+                  value === getValues("password") ||
+                  "Passwords do not match",
+              })}
               placeholder="Confirm your Password"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
-              required
             />
+            {errors.confirmPassword && (
+              <span className="text-red-500">
+                {errors.confirmPassword.message}
+              </span>
+            )}
+
             <h2 className="text-xl font-semibold text-white">Photo URL</h2>
             <input
               type="url"
-              {...register("photoURL", { required: true })}
+              {...register("photoURL", { required: "This field is required" })}
               placeholder="Place your photo"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
-            {errors.photoURL && <span className="text-red-400">This URL field is required</span>}
+            {errors.photoURL && (
+              <span className="text-red-500">{errors.photoURL.message}</span>
+            )}
+
             <button
               type="submit"
               className="bg-red-400 text-white py-3 px-10 rounded-lg shadow-md hover:bg-fuchsia-600 transition-colors duration-300"
@@ -97,10 +144,7 @@ const Register = () => {
       <div className="text-white">
         <p className="text-lg my-10 font-bold text-center pb-8">
           Already have an account? Please{" "}
-          <Link
-            to="/login"
-            className="text-gray-300 hover:underline font-bold"
-          >
+          <Link to="/login" className="text-gray-300 hover:underline font-bold">
             Login
           </Link>
         </p>
