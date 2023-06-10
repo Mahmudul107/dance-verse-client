@@ -37,7 +37,7 @@ const Navbar = () => {
       return (
         <Link
           to="/login"
-          className="btn hover:bg-red-400 duration-700 ml-2 text-black font-bold py-2 px-4 rounded-3xl"
+          className="btn hover:bg-red-400 duration-700 ml-2 text-black hover:text-white font-bold py-2 px-4 rounded-3xl"
         >
           Login
         </Link>
@@ -99,7 +99,7 @@ const Navbar = () => {
           {user && (
             <Link
               onClick={handleLogout}
-              className="btn hover:bg-red-400 duration-700 ml-2 text-black font-bold py-2 px-4 rounded-3xl"
+              className="btn hover:bg-red-400 duration-700 ml-2 text-black hover:text-white font-bold py-2 px-4 rounded-3xl"
             >
               Logout
             </Link>

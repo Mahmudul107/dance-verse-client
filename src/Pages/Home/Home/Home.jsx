@@ -2,6 +2,7 @@ import React from 'react';
 import Marque from './Marque/Marque';
 import Slider from './slider/Slider';
 import PopularClass from './PopularClass/PopularClass';
+import PopularInstructors from './PopularInstructors/PopularInstructors';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Slider/>
             <Marque/>
             <PopularClass/>
+            <PopularInstructors/>
         </div>
     );
 };
