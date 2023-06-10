@@ -13,7 +13,7 @@ const Slider = () => {
             alt=""
           />
           <div className="text-white text-center text-2xl md:text-5xl absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p>Experience the Magic of Movement and Expression</p>
+            <p className="whitespace-nowrap"><i>Experience the Magic of Movement and Expression</i></p>
             <button className="btn-sm bg-white md:btn mt-6 hover:bg-red-400 duration-900 text-black hover:text-white border-none">
               Explore Now
             </button>
@@ -26,7 +26,7 @@ const Slider = () => {
             alt=""
           />
           <div className="text-white text-center text-2xl md:text-5xl absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p>Dance and Let Your Body Tell Your Story</p>
+            <p className="whitespace-nowrap"><i>Dance and Let Your Body Tell Your Story</i></p>
             <button className="btn-sm bg-white md:btn mt-6 hover:bg-red-400 text-black hover:text-white border-none duration-700">
               Explore Now
             </button>
@@ -39,7 +39,7 @@ const Slider = () => {
             alt=""
           />
           <div className="text-white text-center text-2xl md:text-5xl absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p>Immerse Yourself in the Beauty of Dance</p>
+            <p className="whitespace-nowrap"><i>Immerse Yourself in the Beauty of Dance</i></p>
             <button className="btn-sm bg-white md:btn mt-6 hover:bg-red-400 text-black hover:text-white border-none duration-700">
               Explore Now
             </button>
@@ -52,7 +52,7 @@ const Slider = () => {
             alt=""
           />
           <div className="text-white text-center text-2xl md:text-5xl absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p>Feel the Energy and Dance to the Rhythm of Your Heart</p>
+            <p className="whitespace-nowrap"><i>Feel the Energy and Dance to the Rhythm of Your Heart</i></p>
             <button className="btn-sm bg-white md:btn mt-6 hover:bg-red-400 text-black hover:text-white border-none duration-700">
               Explore Now
             </button>

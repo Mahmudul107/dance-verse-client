@@ -19,7 +19,9 @@ const PopularClass = () => {
 
   return (
     <div className="mx-auto py-8">
-      <h2 className="text-6xl text-center font-bold mb-24">Learn a Variety Dance Classes</h2>
+      <div className="w-[800px] mx-auto divider"></div>
+      <i><h2 className="text-6xl text-center font-bold">Learn a Variety Dance Classes</h2></i>
+      <div className="w-[800px] mx-auto divider mb-24"></div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {classes.map((danceClass, index) => (
           <div key={index} className="bg-white rounded shadow p-4">
