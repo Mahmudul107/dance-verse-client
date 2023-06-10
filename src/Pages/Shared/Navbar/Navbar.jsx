@@ -37,7 +37,7 @@ const Navbar = () => {
       return (
         <Link
           to="/login"
-          className="bg-red-600 hover:bg-red-400 duration-700 ml-2 text-white font-bold py-2 px-4 rounded-3xl"
+          className="btn hover:bg-red-400 duration-700 ml-2 text-black font-bold py-2 px-4 rounded-3xl"
         >
           Login
         </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center justify-center">
-             
+          <img className="w-24 h-32 -mr-6" src={logo} alt="" />
             <Link className="btn btn-ghost normal-case text-3xl">
               Dance Verse
             </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
           {user && (
             <Link
               onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-400 duration-700 ml-2 text-white font-bold py-2 px-4 rounded-3xl"
+              className="btn hover:bg-red-400 duration-700 ml-2 text-black font-bold py-2 px-4 rounded-3xl"
             >
               Logout
             </Link>
