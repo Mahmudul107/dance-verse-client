@@ -1,0 +1,20 @@
+.marquee-image-container {
+    display: flex;
+    align-items: center;
+    height: 400px; /* Adjust the height as needed */
+  }
+  
+  .marquee-image {
+    width: auto;
+    height: 80%; /* Adjust the image size as needed */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .marquee-image-up {
+    transform: translateY(-20%);
+  }
+  
+  .marquee-image-down {
+    transform: translateY(20%);
+  }
+  
