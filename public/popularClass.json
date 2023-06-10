@@ -1,0 +1,34 @@
+[
+  {
+    "className": "Ballet Class",
+    "image": "https://plus.unsplash.com/premium_photo-1661760910739-d829ee24a7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "className": "Hip Hop Class",
+    "image": "https://images.unsplash.com/photo-1558609018-d72e3bf79f1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "className": "Contemporary Class",
+    "image": "https://images.unsplash.com/photo-1596041718569-b62cef60d6b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "className": "Salsa Class",
+    "image": "https://images.unsplash.com/photo-1545959570-a94084071b5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=797&q=80"
+  },
+  {
+    "className": "Tap Dance Class",
+    "image": "https://images.unsplash.com/photo-1521811059291-0cc94774e6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "className": "Jazz Class",
+    "image": "https://images.unsplash.com/photo-1518817224167-fd9c61124283?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80"
+  },
+  {
+    "className": "Popping Class",
+    "image": "https://images.unsplash.com/photo-1660727375291-d85cd463a4f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "className": "Cardio Class",
+    "image": "https://images.unsplash.com/photo-1520706004450-f170ae7d8176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  }
+]

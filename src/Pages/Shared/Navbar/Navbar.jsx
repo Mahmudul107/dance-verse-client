@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dancing.png";
@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logOutUser()
@@ -45,20 +45,23 @@ const Navbar = () => {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const navOptions = (
     <>
       <li>
-        <Link>Home</Link>
+        <Link onClick={toggleMenu}>Home</Link>
       </li>
       <li>
-        <Link>Instructors</Link>
+        <Link onClick={toggleMenu}>Instructors</Link>
       </li>
       <li>
-        <Link>Classes</Link>
+        <Link onClick={toggleMenu}>Classes</Link>
       </li>
       <li>
-        <Link>Dashboard</Link>
+        <Link onClick={toggleMenu}>Dashboard</Link>
       </li>
     </>
   );
@@ -68,19 +71,22 @@ const Navbar = () => {
       <div className="navbar h-14 bg-gradient-to-r from-purple-300 to-red-200">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost lg:hidden"
+              onClick={toggleMenu}
+            >
               <CiMenuFries />
             </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl"
-            >
-              {navOptions}
-            </ul>
+            {isMenuOpen && (
+              <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl">
+                {navOptions}
+              </ul>
+            )}
           </div>
           <div className="flex items-center justify-center">
-          <img className="w-24 h-32 -mr-6" src={logo} alt="" />
-            <Link className="btn btn-ghost normal-case text-3xl">
+            <img className="w-24 h-32 -mr-6" src={logo} alt="" />
+            <Link className="hidden lg:block btn btn-ghost normal-case text-3xl">
               Dance Verse
             </Link>
           </div>
@@ -88,9 +94,8 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
         </div>
-        
-      <div className="navbar-end mr-10 text-lg">
-      {renderProfileButton()}
+        <div className="navbar-end mr-10 text-lg">
+          {renderProfileButton()}
           {user && (
             <Link
               onClick={handleLogout}
@@ -99,7 +104,7 @@ const Navbar = () => {
               Logout
             </Link>
           )}
-      </div>
+        </div>
       </div>
     </div>
   );
