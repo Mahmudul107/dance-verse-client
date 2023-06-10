@@ -1,0 +1,83 @@
+[
+    {
+      "instructorName": "Misty Copeland",
+      "image": "https://i.ibb.co/2K1hhsV/Misty-Copeland.jpg",
+      "email": "misty@example.com",
+      "numberOfClasses": 10,
+      "classNames": ["Ballet Fundamentals", "Contemporary Dance"],
+      "seeClassesLink": "https://example.com/misty-classes"
+    },
+    {
+      "instructorName": "Marianela Núñez",
+      "image": "https://i.ibb.co/g7QnSmJ/Marianela-Nu-ez.webp",
+      "email": "marianela@example.com",
+      "numberOfClasses": 8,
+      "classNames": ["Classical Ballet", "Pointe Technique"],
+      "seeClassesLink": "https://example.com/marianela-classes"
+    },
+    {
+      "instructorName": "Merce Cunningham",
+      "image": "https://i.ibb.co/Gd2CKX4/Merce-Cunningham.jpg",
+      "email": "merce@example.com",
+      "numberOfClasses": 5,
+      "classNames": ["Modern Dance", "Improvisation"],
+      "seeClassesLink": "https://example.com/merce-classes"
+    },
+    {
+      "instructorName": "Pina Bausch",
+      "image": "https://i.ibb.co/FWp0F6L/Pina-Bausch.jpg",
+      "email": "pina@example.com",
+      "numberOfClasses": 12,
+      "classNames": ["Expressionist Dance", "Physical Theatre"],
+      "seeClassesLink": "https://example.com/pina-classes"
+    },
+    {
+      "instructorName": "Twyla Tharp",
+      "image": "https://i.ibb.co/XZs6phj/Twyla-Tharp.jpg",
+      "email": "twyla@example.com",
+      "numberOfClasses": 6,
+      "classNames": ["Jazz Dance", "Choreography"],
+      "seeClassesLink": "https://example.com/twyla-classes"
+    },
+    {
+      "instructorName": "Ohad Naharin",
+      "image": "https://i.ibb.co/F5Lyxsb/ohad.jpg",
+      "email": "ohad@example.com",
+      "numberOfClasses": 7,
+      "classNames": ["Gaga Technique", "Composition"],
+      "seeClassesLink": "https://example.com/ohad-classes"
+    },
+    {
+      "instructorName": "Isadora Duncan",
+      "image": "https://i.ibb.co/YZwYF75/Isadora-Duncan.jpg",
+      "email": "isadora@example.com",
+      "numberOfClasses": 9,
+      "classNames": ["Classical Greek Dance", "Free Dance"],
+      "seeClassesLink": "https://example.com/isadora-classes"
+    },
+    {
+      "instructorName": "Madhuri Dixit",
+      "image": "https://i.ibb.co/sbhQGDM/Madhuri-Dixit.jpgg",
+      "email": "alvin@example.com",
+      "numberOfClasses": 11,
+      "classNames": ["African Dance", "Modern Jazz"],
+      "seeClassesLink": "https://example.com/alvin-classes"
+    },
+    {
+      "instructorName": "Martha Graham",
+      "image": "https://i.ibb.co/jyHLsrt/Martha-Graham.png",
+      "email": "martha@example.com",
+      "numberOfClasses": 14,
+      "classNames": ["Graham Technique", "Contract and Release"],
+      "seeClassesLink": "https://example.com/martha-classes"
+    },
+    {
+      "instructorName": "Fred Astaire",
+      "image": "https://i.ibb.co/vXNDMT8/Fred-Astaire.jpg",
+      "email": "fred@example.com",
+      "numberOfClasses": 13,
+      "classNames": ["Tap Dance", "Ballroom Dance"],
+      "seeClassesLink": "https://example.com/fred-classes"
+    }
+  ]
+  

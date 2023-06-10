@@ -52,22 +52,22 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link onClick={toggleMenu}>Home</Link>
+        <Link to='/' onClick={toggleMenu}>Home</Link>
       </li>
       <li>
-        <Link onClick={toggleMenu}>Instructors</Link>
+        <Link to='/instructors' onClick={toggleMenu}>Instructors</Link>
       </li>
       <li>
-        <Link onClick={toggleMenu}>Classes</Link>
+        <Link to='classes' onClick={toggleMenu}>Classes</Link>
       </li>
       <li>
-        <Link onClick={toggleMenu}>Dashboard</Link>
+        <Link to='dashboard' onClick={toggleMenu}>Dashboard</Link>
       </li>
     </>
   );
 
   return (
-    <div className="fixed h-14 z-10 w-full">
+    <div className=" z-20 w-full">
       <div className="navbar h-14 bg-gradient-to-r from-purple-300 to-red-200">
         <div className="navbar-start">
           <div className="dropdown">
