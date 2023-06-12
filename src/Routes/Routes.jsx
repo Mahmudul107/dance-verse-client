@@ -6,8 +6,10 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import Instructor from "../Pages/Instructor/Instructor";
+import MyClass from "../Pages/dashboard/MyClass/MyClass";
 import Dashboard from "../Layout/Dashboard";
-import MyClass from "../Pages/dashboard/MyClass";
+import EnrolledClass from "../Pages/dashboard/EnrolledClass/EnrolledClass";
+import ManageUsers from "../Pages/dashboard/ManageUsers/ManageUsers";
 
   export const router = createBrowserRouter([
     {
@@ -32,4 +34,22 @@ import MyClass from "../Pages/dashboard/MyClass";
         }
       ]
     },
+    {
+      path: 'dashboard',
+      element: <Dashboard/>,
+      children: [
+        {
+          path: 'myClass',
+          element: <MyClass/>
+        },
+        {
+          path: 'myEnrolledClass',
+          element: <EnrolledClass/>
+        },
+        {
+          path: 'manageUsers',
+          element: <ManageUsers/>
+        },
+      ]
+    }
   ]);
