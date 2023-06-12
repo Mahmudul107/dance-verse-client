@@ -6,9 +6,10 @@ import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const {user, createUser, updateUserData } = useContext(AuthContext);
+  const { user, createUser, updateUserData } = useContext(AuthContext);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const {
@@ -16,7 +17,8 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    getValues,reset
+    getValues,
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -28,31 +30,45 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
-        updateUserData(result.user, name, photoURL);
-        setIsRegistered(true); // set isRegistered to true if registration is successful
-        reset();
+
+        updateUserData(result.user, name, photoURL)
+        .then(() => {
+          const savedUser = {name: name, email: email, photoURL: photoURL};
+          fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(savedUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            if(data.insertedId){
+              Swal.fire('User Registered Successfully')
+            }
+          })
+          setIsRegistered(true);
+          reset();
+        });
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-    // Redirect to login form after registration
-    if (isRegistered) {
-      return (
-        <div className="flex items-center justify-center h-screen bg-gray-100 ">
-          <div className="bg-fuchsia-200 p-6 rounded-lg shadow-lg md:w-1/2 text-center">
-            <h2 className="text-lg font-semibold mb-4">Registration successful!</h2>
-            <Link
-              className="text-red-500 hover:underline font-bold"
-              to="/login"
-            >
-              Click here to login
-            </Link>
-          </div>
+  // Redirect to login form after registration
+  if (isRegistered) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-100 ">
+        <div className="bg-fuchsia-200 p-6 rounded-lg shadow-lg md:w-1/2 text-center">
+          <h2 className="text-lg font-semibold mb-4">
+            Registration successful!
+          </h2>
+          <Link className="text-red-500 hover:underline font-bold" to="/login">
+            Click here to login
+          </Link>
         </div>
-      );
-    }
+      </div>
+    );
+  }
 
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
@@ -94,7 +110,9 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-white">Email Address</h2>
             <input
               type="email"
-              {...register("email", { required: "This Email field is required" })}
+              {...register("email", {
+                required: "This Email field is required",
+              })}
               placeholder="Enter Your Email"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
@@ -133,8 +151,7 @@ const Register = () => {
               {...register("confirmPassword", {
                 required: "This Confirm Password field is required",
                 validate: (value) =>
-                  value === getValues("password") ||
-                  "Passwords do not match",
+                  value === getValues("password") || "Passwords do not match",
               })}
               placeholder="Confirm your Password"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
@@ -148,7 +165,9 @@ const Register = () => {
             <h2 className="text-xl font-semibold text-white">Photo URL</h2>
             <input
               type="url"
-              {...register("photoURL", { required: "This URL field is required" })}
+              {...register("photoURL", {
+                required: "This URL field is required",
+              })}
               placeholder="Place your photo"
               className="w-[500px] p-3 border-2 border-gray-300 rounded-lg"
             />
@@ -179,7 +198,7 @@ const Register = () => {
       <div className="text-white">
         <p className="text-lg my-10 font-bold text-center pb-8">
           Already have an account? Please{" "}
-          <Link to="/login" className="text-gray-300 hover:underline font-bold">
+          <Link to="/login" className="text-gray-300  hover:underline font-bold">
             Login
           </Link>
         </p>

@@ -8,7 +8,7 @@ const Gallery = () => {
         <h1 className="text-6xl text-center font-bold"><i>You're a good dancer, We know it</i></h1>
         <div className="w-[800px] mx-auto divider mb-24"></div>
         <Marquee
-        className=" pb-28"
+        className=" pb-28 bg-gray-400"
         // gradient={true}
         // gradientColor={[255, 255, 255]}
         // pauseOnHover={true}

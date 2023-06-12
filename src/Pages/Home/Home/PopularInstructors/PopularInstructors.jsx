@@ -4,27 +4,27 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("popularInstructors.json")
+    fetch("instructors.json")
       .then((response) => response.json())
-      .then((data) => setInstructors(data))
-      .catch((error) => {
-        console.error("Error fetching data:", error);
+      .then((data) => {
+        const popularInstructors = data.filter(
+          (instructor) => instructor.category === "Popular"
+        );
+        setInstructors(popularInstructors);
       });
   }, []);
 
   return (
     <div className="mx-auto py-8">
       <div className="w-[800px] mx-auto divider"></div>
-
       <i>
         <h2 className="text-6xl text-center font-bold">Popular Instructors</h2>
       </i>
       <div className="w-[800px] mx-auto divider mb-24"></div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-        {instructors.map((instructor, index) => (
+        {instructors.map((instructor) => (
           <div
-            key={index}
+            key={instructor.id}
             className="bg-white rounded shadow p-4 flex flex-col relative"
           >
             <img
