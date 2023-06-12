@@ -11,7 +11,22 @@ const ManageUsers = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   const makeInstructor = (user) => {
-   
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        method: 'PATCH'
+    })
+    .then( res => res.json())
+    .then(data=> {
+        if(data.modifiedCount) {
+            refetch()
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is an Instructor now!`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+    })
   };
 
   const makeAdmin = (user) => {
