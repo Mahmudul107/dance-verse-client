@@ -8,12 +8,12 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth(); 
+  const { logOutUser } = useAuth(); 
   const navigate = useNavigate(); 
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
-      const token = localStorage.getItem('access-token');
+      const token = localStorage.getItem('jwt-access-token');
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -24,13 +24,13 @@ const useAxiosSecure = () => {
       (response) => response,
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-          await logOut();
-          navigate('/login');
+          await logOutUser();
+        //   navigate('/login');
         }
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOutUser, navigate]);
 
   return [axiosSecure];
 };

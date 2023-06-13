@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
       axios.post('http://localhost:5000/jwt', { email: loggedInUser.email })
         .then(data => {
           console.log(data.data.token);
-          localStorage.setItem('access_token', data.data.token);
+          localStorage.setItem('jwt-access-token', data.data.token);
         })
         .catch(error => {
           console.error('Error while obtaining token:', error);
@@ -81,7 +81,7 @@ const AuthProvider = ({ children }) => {
         });
     } else {
       // Clear access token
-      localStorage.removeItem('access_token');
+      localStorage.removeItem('jwt-access-token');
     }
 
       setLoading(false);
