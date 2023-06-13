@@ -77,7 +77,7 @@ const Navbar = () => {
         <Link to='/classes' onClick={toggleMenu}>Classes</Link>
       </li>
       <li>
-        <Link to='/dashboard/myClass' onClick={toggleMenu}>Dashboard</Link>
+        <Link to='/dashboard' onClick={toggleMenu}>Dashboard</Link>
       </li>
     </>
   );

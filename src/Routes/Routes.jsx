@@ -10,6 +10,8 @@ import MyClass from "../Pages/dashboard/MyClass/MyClass";
 import Dashboard from "../Layout/Dashboard";
 import EnrolledClass from "../Pages/dashboard/EnrolledClass/EnrolledClass";
 import ManageUsers from "../Pages/dashboard/ManageUsers/ManageUsers";
+import AddaClass from "../Pages/dashboard/addClass/AddaClass";
+import SelectedClasses from "../Pages/dashboard/selectedClasses/SelectedClasses";
 
   export const router = createBrowserRouter([
     {
@@ -39,12 +41,28 @@ import ManageUsers from "../Pages/dashboard/ManageUsers/ManageUsers";
       element: <Dashboard/>,
       children: [
         {
-          path: 'myClass',
-          element: <MyClass/>
-        },
-        {
           path: 'myEnrolledClass',
           element: <EnrolledClass/>
+        },
+        {
+          path: 'selectedClasses',
+          element: <SelectedClasses/>
+        },
+        
+        // Instructor
+        {
+          path: 'addClasses',
+          element: <AddaClass/>
+        },
+        {
+          path: 'myClasses',
+          element: <MyClass/>
+        },
+
+        // Admin
+        {
+          path: 'manageClasses',
+          element: <ManageUsers/>
         },
         {
           path: 'manageUsers',

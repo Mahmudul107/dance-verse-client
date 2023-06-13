@@ -41,19 +41,19 @@ const Dashboard = () => {
           ) : isInstructor ? (
             <>
               <li>
-                <Link to="/dashboard/myEnrolledClass">Add a Class</Link>
+                <Link to="/dashboard/addClasses">Add a Class</Link>
               </li>
               <li>
-                <Link to="/dashboard/manageUsers">My Classes</Link>
+                <Link to="/dashboard/myClasses">My Classes</Link>
               </li>
             </>
           ) : (
             <>
               <li>
-                <Link to="/dashboard/myEnrolledClass">My Selected Classes</Link>
+                <Link to="/dashboard/selectedClasses">My Selected Classes</Link>
               </li>
               <li>
-                <Link to="/dashboard/myClass">My Enrolled Classes</Link>
+                <Link to="/dashboard/myEnrolledClass">My Enrolled Classes</Link>
               </li>
             </>
           )}
