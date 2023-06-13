@@ -27,7 +27,8 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-        <h2 className="mb-20 text-5xl">Dance Verse</h2>
+        <h2 className=" text-5xl">Dance Verse</h2>
+        <p className="mb-20 text-center mt-2">Feel your body with music</p>
           {isAdmin ? (
             <>
               <li>
