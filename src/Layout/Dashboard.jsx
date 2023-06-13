@@ -2,10 +2,12 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MdHistory, MdManageAccounts } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  // const isAdmin = true;
   const isInstructor = true;
+  const [isAdmin] = useAdmin()
 
   return (
     <div className="drawer lg:drawer-open">
