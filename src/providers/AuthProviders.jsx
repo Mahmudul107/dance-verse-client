@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -65,6 +66,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedInUser) => {
       setUser(loggedInUser);
+
+
+      // Get and set token
+    if (loggedInUser) {
+      axios.post('http://localhost:5000/jwt', { email: loggedInUser.email })
+        .then(data => {
+          console.log(data.data.token);
+          localStorage.setItem('access_token', data.data.token);
+        })
+        .catch(error => {
+          console.error('Error while obtaining token:', error);
+          // Handle error appropriately
+        });
+    } else {
+      // Clear access token
+      localStorage.removeItem('access_token');
+    }
+
       setLoading(false);
     });
 

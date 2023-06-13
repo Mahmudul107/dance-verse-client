@@ -88,9 +88,9 @@ const ManageUsers = () => {
                 <td className="border-b border-gray-300 px-4 py-2 border-l border-r">
                   {user.email}
                 </td>
-                <td className="border-b border-gray-300 px-4 py-2 text-end flex justify-evenly">
+                <td className="border-b border-gray-300 px-4 py-2 text-end flex justify-between mt-1">
                   {user.role === "instructor" ? (
-                    "instructor"
+                    <p className="py-2 px-4 bg-indigo-100 rounded-md">Instructor</p>
                   ) : (
                     <button
                       onClick={() => makeInstructor(user)}
@@ -100,7 +100,7 @@ const ManageUsers = () => {
                     </button>
                   )}
                   {user.role === "admin" ? (
-                    "admin"
+                    <p className="py-2 px-4 bg-indigo-100 rounded-md">Admin</p>
                   ) : (
                     <button
                       onClick={() => makeAdmin(user)}

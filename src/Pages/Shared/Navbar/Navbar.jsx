@@ -3,11 +3,27 @@ import { CiMenuFries } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dancing.png";
 import { AuthContext } from "../../../providers/AuthProviders";
-import { FaUser } from "react-icons/fa";
+import { FaMoon, FaSun, FaUser } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState('light');
+
+
+  useEffect( () => {
+    if(isDarkTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+    else{
+      document.documentElement.classList.remove('dark');
+    }
+  })
+
+  const handleThemeSwitch = () => {
+    setIsDarkTheme(isDarkTheme === 'dark'? 'light' : 'dark');
+  }
 
   const handleLogout = () => {
     logOutUser()
@@ -106,6 +122,13 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <button
+        onClick={handleThemeSwitch}
+        className={`fixed bottom-5 right-5 p-3 rounded-full bg-gray-300 text-gray-800 ${isDarkTheme ? "dark:bg-gray-800 dark:text-white" : ""}`}
+        title={`Toggle ${isDarkTheme ? "Light" : "Dark"} Theme`}
+      >
+        {isDarkTheme ? <FaSun /> : <FaMoon />}
+      </button>
     </div>
   );
 };
