@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -12,7 +12,7 @@ const ManageClasses = () => {
 
   const fetchClasses = async () => {
     try {
-      const response = await axiosSecure.get('/classes');
+      const response = await axiosSecure.get("/classes");
       setClasses(response.data);
     } catch (error) {
       console.error(error);
@@ -21,11 +21,11 @@ const ManageClasses = () => {
 
   const handleApprove = async (classId) => {
     try {
-      await axiosSecure.put(`/classes/${classId}`, { status: 'approved' });
+      await axiosSecure.put(`/classes/${classId}`, { status: "approved" });
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Class has been approved',
+        position: "top-end",
+        icon: "success",
+        title: "Class has been approved",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -37,11 +37,11 @@ const ManageClasses = () => {
 
   const handleDeny = async (classId) => {
     try {
-      await axiosSecure.put(`/classes/${classId}`, { status: 'denied' });
+      await axiosSecure.put(`/classes/${classId}`, { status: "denied" });
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Class has been denied',
+        position: "top-end",
+        icon: "success",
+        title: "Class has been denied",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -59,7 +59,7 @@ const ManageClasses = () => {
 
   return (
     <div>
-      <h2 className="text-center text-4xl">Manage Classes Admin</h2>
+      <h2 className="text-center text-4xl mb-10 font-semibold">Manage Classes Admin</h2>
       {classes.length > 0 ? (
         <table className="w-full border-collapse">
           <thead>
@@ -78,7 +78,11 @@ const ManageClasses = () => {
             {classes.map((classItem) => (
               <tr key={classItem._id}>
                 <td className="border p-2">
-                  <img src={classItem.classImage} alt={classItem.className} className="w-20" />
+                  <img
+                    src={classItem.classImage}
+                    alt={classItem.className}
+                    className="w-20"
+                  />
                 </td>
                 <td className="border p-2">{classItem.className}</td>
                 <td className="border p-2">{classItem.name}</td>
@@ -87,7 +91,7 @@ const ManageClasses = () => {
                 <td className="border p-2">{classItem.price}</td>
                 <td className="border p-2">{classItem.status}</td>
                 <td className="border p-2">
-                  {classItem.status === 'pending' ? (
+                  {classItem.status === "pending" ? (
                     <>
                       <button
                         onClick={() => handleApprove(classItem._id)}

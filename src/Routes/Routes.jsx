@@ -13,6 +13,7 @@ import ManageUsers from "../Pages/dashboard/ManageUsers/ManageUsers";
 import AddaClass from "../Pages/dashboard/addClass/AddaClass";
 import SelectedClasses from "../Pages/dashboard/selectedClasses/SelectedClasses";
 import ErrorPage from "../providers/ErrorPage";
+import ManageClasses from "../Pages/dashboard/manageClasses/ManageClasses";
 
   export const router = createBrowserRouter([
     {
@@ -64,7 +65,7 @@ import ErrorPage from "../providers/ErrorPage";
         // Admin
         {
           path: 'manageClasses',
-          element: <ManageUsers/>
+          element: <ManageClasses/>
         },
         {
           path: 'manageUsers',

@@ -6,6 +6,7 @@ import groovyWalkAnimation from "../../assets/groovyWalkAnimation.json";
 import loginBg from "../../assets/loginbg.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -23,6 +24,15 @@ const Login = () => {
 
     signInUser(email, password)
     .then((result) => {
+      Swal.fire({
+        title: 'User Logged in Successfully',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
       const loggedInUser = result.user;
       console.log(loggedInUser);
       setError("");
