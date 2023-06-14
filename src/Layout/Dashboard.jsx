@@ -32,7 +32,7 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <Link to="/dashboard/myEnrolledClass"><MdHistory/>  Manage Classes</Link>
+                <Link to="/dashboard/manageClasses"><MdHistory/>  Manage Classes</Link>
               </li>
               <li>
                 <Link to="/dashboard/manageUsers"><MdManageAccounts/> Manage User</Link>

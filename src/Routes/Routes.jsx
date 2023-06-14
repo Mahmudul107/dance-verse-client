@@ -12,11 +12,13 @@ import EnrolledClass from "../Pages/dashboard/EnrolledClass/EnrolledClass";
 import ManageUsers from "../Pages/dashboard/ManageUsers/ManageUsers";
 import AddaClass from "../Pages/dashboard/addClass/AddaClass";
 import SelectedClasses from "../Pages/dashboard/selectedClasses/SelectedClasses";
+import ErrorPage from "../providers/ErrorPage";
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main/>,
+      errorElement: <ErrorPage/>,
       children: [
         {
             path: '/',
