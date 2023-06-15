@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import LoadingSpinner from "../../providers/LoadingSpinner";
+// import LoadingSpinner from "../../providers/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   // Loading
   if (loading) {
     return (
-      <LoadingSpinner/>
+      <p>...Loading</p>
     );
   }
 

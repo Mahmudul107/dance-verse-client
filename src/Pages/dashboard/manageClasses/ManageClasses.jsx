@@ -119,7 +119,7 @@ const ManageClasses = () => {
           </tbody>
         </table>
       ) : (
-        <p>No classes found.</p>
+        <p className="text-2xl text-red-500 font-bold">No classes found.</p>
       )}
     </div>
   );

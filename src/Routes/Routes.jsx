@@ -14,6 +14,7 @@ import AddaClass from "../Pages/dashboard/addClass/AddaClass";
 import SelectedClasses from "../Pages/dashboard/selectedClasses/SelectedClasses";
 import ErrorPage from "../providers/ErrorPage";
 import ManageClasses from "../Pages/dashboard/manageClasses/ManageClasses";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -35,13 +36,14 @@ import ManageClasses from "../Pages/dashboard/manageClasses/ManageClasses";
         },
         {
           path: 'instructors',
-          element: <Instructor/>
+          element: <Instructor/>,
+          loader: ()=> fetch('http://localhost:5000/users/instructor')
         }
       ]
     },
     {
       path: 'dashboard',
-      element: <Dashboard/>,
+      element: <PrivateRoute><Dashboard/></PrivateRoute>,
       children: [
         {
           path: 'myEnrolledClass',
