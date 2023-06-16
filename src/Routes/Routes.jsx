@@ -37,7 +37,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
         {
           path: 'instructors',
           element: <Instructor/>,
-          loader: ()=> fetch('http://localhost:5000/users/instructor')
+          loader: ()=> fetch('https://dance-school-server-eight.vercel.app/users/instructor')
         }
       ]
     },

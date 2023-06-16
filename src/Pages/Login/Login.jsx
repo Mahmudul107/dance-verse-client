@@ -70,7 +70,7 @@ const Login = () => {
           />
         </div>
         <div className="p-6 rounded-lg -ml-40">
-          <h2 className="text-3xl font-semibold mb-3 mt-12">Login Here</h2>
+          <h2 className="text-3xl text-white font-semibold mb-3 mt-12">Login Here</h2>
           <h4 className=" font-semibold  text-white text-base mb-8">
             Log In to try our amazing services
           </h4>

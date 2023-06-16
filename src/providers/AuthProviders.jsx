@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
 
       // Get and set token
     if (loggedInUser) {
-      axios.post('http://localhost:5000/jwt', { email: loggedInUser.email })
+      axios.post('https://dance-school-server-eight.vercel.app/jwt', { email: loggedInUser.email })
         .then(data => {
           console.log(data.data.token);
           localStorage.setItem('jwt-access-token', data.data.token);

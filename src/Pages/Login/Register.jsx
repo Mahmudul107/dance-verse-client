@@ -34,7 +34,7 @@ const Register = () => {
         updateUserData(result.user, name, photoURL)
         .then(() => {
           const savedUser = {name: name, email: email, photoURL: photoURL};
-          fetch('http://localhost:5000/users', {
+          fetch('https://dance-school-server-eight.vercel.app/users', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(savedUser)
