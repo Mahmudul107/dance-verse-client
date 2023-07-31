@@ -6,7 +6,7 @@ const PopularClass = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('popularClass.json');
+        const response = await fetch('');
         const data = await response.json();
         setClasses(data);
       } catch (error) {

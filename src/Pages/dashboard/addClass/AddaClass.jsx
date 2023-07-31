@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const AddaClass = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { register, handleSubmit, getValues, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { user } = useAuth();
   console.log(user)
 
@@ -28,7 +28,7 @@ const AddaClass = () => {
     };
     console.log(newClasses);
 
-    axiosSecure.post("/classes", newClasses).then((data) => {
+    axiosSecure.post("/class", newClasses).then((data) => {
       console.log(data.data);
       if(data.data.insertedId){
         Swal.fire({

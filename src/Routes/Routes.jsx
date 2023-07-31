@@ -15,6 +15,8 @@ import SelectedClasses from "../Pages/dashboard/selectedClasses/SelectedClasses"
 import ErrorPage from "../providers/ErrorPage";
 import ManageClasses from "../Pages/dashboard/manageClasses/ManageClasses";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Classes from "../Pages/Classes/Classes";
+import Feedback from "../Pages/dashboard/manageClasses/Feedback";
 
   export const router = createBrowserRouter([
     {
@@ -37,7 +39,12 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
         {
           path: 'instructors',
           element: <Instructor/>,
-          loader: ()=> fetch('https://dance-school-server-eight.vercel.app/users/instructor')
+          loader: ()=> fetch('http://localhost:5000/users/instructor')
+        },
+        {
+          path: 'classes',
+          element: <Classes/>,
+          // loader: ()=> fetch('http://localhost:5000/all-class')
         }
       ]
     },
@@ -73,6 +80,10 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
           path: 'manageUsers',
           element: <ManageUsers/>
         },
+        {
+          path: 'feedback/:id',
+          element: <Feedback/>
+        }
       ]
     }
   ]);

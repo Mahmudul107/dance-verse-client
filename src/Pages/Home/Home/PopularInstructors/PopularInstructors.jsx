@@ -4,10 +4,10 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("https://dance-school-server-eight.vercel.app/users/instructor")
-      .then((res) => response.json())
+    fetch("http://localhost:5000/users/instructor")
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setInstructors(data.slice(0, 6)); 
       });
   }, []);

@@ -15,7 +15,7 @@ const ManageUsers = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   const makeInstructor = (user) => {
-    fetch(`https://dance-school-server-eight.vercel.app/users/instructor/${user._id}`, {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
         method: 'PATCH'
     })
     .then( res => res.json())
@@ -34,7 +34,7 @@ const ManageUsers = () => {
   };
 
   const makeAdmin = (user) => {
-    fetch(`https://dance-school-server-eight.vercel.app/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
         method: 'PATCH'
     })
     .then( res => res.json())

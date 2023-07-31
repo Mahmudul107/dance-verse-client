@@ -3,27 +3,12 @@ import { CiMenuFries } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dancing.png";
 import { AuthContext } from "../../../providers/AuthProviders";
-import { FaMoon, FaSun, FaUser } from "react-icons/fa";
-import { useEffect } from "react";
+import { FaUser } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkTheme, setIsDarkTheme] = useState('light');
-
-
-  useEffect( () => {
-    if(isDarkTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-    else{
-      document.documentElement.classList.remove('dark');
-    }
-  })
-
-  const handleThemeSwitch = () => {
-    setIsDarkTheme(isDarkTheme === 'dark'? 'light' : 'dark');
-  }
 
   const handleLogout = () => {
     logOutUser()
@@ -68,25 +53,33 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to='/' onClick={toggleMenu}>Home</Link>
+        <Link to="/" onClick={toggleMenu}>
+          Home
+        </Link>
       </li>
       <li>
-        <Link to='/instructors' onClick={toggleMenu}>Instructors</Link>
+        <Link to="/instructors" onClick={toggleMenu}>
+          Instructors
+        </Link>
       </li>
       <li>
-        <Link to='/classes' onClick={toggleMenu}>Classes</Link>
+        <Link to="/classes" onClick={toggleMenu}>
+          Classes
+        </Link>
       </li>
       <li>
-        <Link to='/dashboard' onClick={toggleMenu}>Dashboard</Link>
+        <Link to="/dashboard" onClick={toggleMenu}>
+          Dashboard
+        </Link>
       </li>
     </>
   );
 
   return (
-    <div className=" z-20 w-full">
+    <div className="z-20 w-full">
       <div className="navbar h-14 bg-gradient-to-r from-purple-300 to-red-200">
         <div className="navbar-start">
-          <div className="dropdown">
+          <motion.nav className="dropdown">
             <label
               tabIndex={0}
               className="btn btn-ghost lg:hidden"
@@ -99,7 +92,7 @@ const Navbar = () => {
                 {navOptions}
               </ul>
             )}
-          </div>
+          </motion.nav>
           <div className="flex items-center justify-center">
             <img className="w-24 h-32 -mr-6" src={logo} alt="" />
             <Link className="hidden lg:block btn btn-ghost normal-case text-3xl">
@@ -122,13 +115,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <button
-        onClick={handleThemeSwitch}
-        className={`fixed bottom-5 right-5 p-3 rounded-full bg-gray-300 text-gray-800 ${isDarkTheme ? "dark:bg-gray-800 dark:text-white" : ""}`}
-        title={`Toggle ${isDarkTheme ? "Light" : "Dark"} Theme`}
-      >
-        {isDarkTheme ? <FaSun /> : <FaMoon />}
-      </button>
     </div>
   );
 };
